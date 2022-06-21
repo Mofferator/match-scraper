@@ -95,7 +95,7 @@ def main():
     print("starting event loop")
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    groupsize = 100
+    groupsize = 15
     q = groupsize
     lasttime = time.time()
     while q < len(listOfMatchIDs):
@@ -103,6 +103,7 @@ def main():
         print("{} - {} {:>20}".format(q-groupsize, q, time.time()-lasttime))
         q += groupsize
         lasttime = time.time()
+        time.sleep(1)
 
     asyncio.run(pullMatches(steamID, listOfMatchIDs[q:len(listOfMatchIDs) - 1]))
     print("{} - {} {:>20}".format(q, len(listOfMatchIDs) - 1, time.time()-lasttime))
